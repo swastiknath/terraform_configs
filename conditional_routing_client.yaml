@@ -1,0 +1,12 @@
+apiversion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: reviews
+spec:
+  hosts:
+   - reviews
+  http:
+  - match:
+   - headers:
+       end-user:
+         exact: atharvak

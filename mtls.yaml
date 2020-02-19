@@ -1,0 +1,23 @@
+apiversion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mtls-mutual
+spec:
+  host: adservice.secure
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+
+
+
+apiversion: auth.istio.io/v1alpha3
+kind: Policy
+metadata:
+   name: mtls-backend
+   namespace: secure
+spec:
+   targets:
+   - name: adservice
+   peers: 
+   - mtls:
+       mode: STRICT
